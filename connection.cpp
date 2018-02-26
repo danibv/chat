@@ -3,6 +3,7 @@
 Connection::Connection(qintptr ID, QObject *parent) : QThread(parent)
 {
     this -> id = ID;
+
 }
 
 void Connection::run()
@@ -45,4 +46,8 @@ void Connection::disconnected()
     emit remove_connection();
     socket->deleteLater();
     exit(0);
+}
+
+Connection:: ~Connection() {
+    socket->~QTcpSocket();
 }
