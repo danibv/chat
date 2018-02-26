@@ -11,6 +11,7 @@ class Connection : public QThread
 public:
     explicit Connection(qintptr ID, QObject *parent = 0);
     void run();
+    ~Connection();
     QByteArray message;
 signals:
     void error(QTcpSocket::SocketError sockEr);
@@ -25,6 +26,7 @@ public slots:
 public:
     QTcpSocket *socket;
     qintptr id;
+
 };
 
 #endif // CONNECTION_H
